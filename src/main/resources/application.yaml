@@ -1,0 +1,8 @@
+quarkus:
+  application:
+    name: quarkus-playground
+
+  log:
+    category:
+      com.github.bkhablenko:
+        level: DEBUG
