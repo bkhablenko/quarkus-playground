@@ -1,0 +1,37 @@
+version: 2.1
+
+commands:
+  restore_maven_cache:
+    steps:
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "pom.xml" }}
+            - v1-dependencies-
+  save_maven_cache:
+    steps:
+      - save_cache:
+          key: v1-dependencies-{{ checksum "pom.xml" }}
+          paths:
+            - ~/.m2/repository
+
+jobs:
+  build:
+    docker:
+      - image: cimg/openjdk:17.0
+      - image: cimg/postgres:15.3
+        environment:
+          POSTGRES_DB: quarkus-playground
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: password
+    steps:
+      - checkout
+      - restore_maven_cache
+      - run: mvn clean package
+      - store_test_results:
+          path: target/surefire-reports
+      - save_maven_cache
+
+workflows:
+  main:
+    jobs:
+      - build

@@ -1,4 +1,7 @@
-# quarkus-playground
+[![CircleCI](https://circleci.com/gh/bkhablenko/quarkus-playground.svg?style=shield)](https://circleci.com/gh/bkhablenko/quarkus-playground)
+
+quarkus-playground
+==================
 
 ## License
 
