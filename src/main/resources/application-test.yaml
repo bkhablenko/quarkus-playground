@@ -1,0 +1,9 @@
+# TODO(bkhablenko): Move to src/test/resources/application.yaml
+
+quarkus:
+  http:
+    test-port: 18080
+  hibernate-orm:
+    log:
+      sql: true
+      format-sql: false
