@@ -18,7 +18,6 @@ import java.util.Optional;
 
 import static com.spotify.hamcrest.optional.OptionalMatchers.optionalWithValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 @QuarkusTest
@@ -43,13 +42,14 @@ public class BookRepositoryTest extends AbstractRepositoryTest {
         final String bookTitle = "Of Mice and Men";
 
         final AuthorEntity author = persist(AuthorEntity.builder().fullName("John Steinbeck").build());
-        bookRepository.persist(BookEntity.builder().title(bookTitle).author(author).build());
+        persist(BookEntity.builder().title(bookTitle).author(author).build());
         flushAndClear();
 
         final BookEntity foundBook = findByTitle(bookTitle);
 
-        assertThat(foundBook.getCreatedDate(), is(equalTo(EXPECTED_TIMESTAMP)));
-        assertThat(foundBook.getLastModifiedDate(), is(equalTo(EXPECTED_TIMESTAMP)));
+        assertThat(isLoaded(foundBook.getAuthor()), is(false));
+        assertThat(foundBook.getCreatedDate(), is(EXPECTED_TIMESTAMP));
+        assertThat(foundBook.getLastModifiedDate(), is(EXPECTED_TIMESTAMP));
     }
 
     private BookEntity findByTitle(String title) {
