@@ -1,6 +1,7 @@
 package com.github.bkhablenko.domain.listener;
 
 import com.github.bkhablenko.domain.model.AbstractEntity;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import lombok.Setter;
 import java.time.Clock;
 import java.time.LocalDateTime;
 
+@ApplicationScoped
 public class AuditingEntityListener {
 
     @Setter
