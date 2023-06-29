@@ -1,16 +1,6 @@
-# TODO(bkhablenko): Move to src/test/resources/application.yaml
-
 quarkus:
-  datasource:
-    db-kind: postgresql
-    username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:password}
-    jdbc:
-      url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:${quarkus.application.name}}
-
   http:
     test-port: 18080
-
   hibernate-orm:
     log:
       sql: true

@@ -1,0 +1,25 @@
+{
+    "content": ":bell: **{teamName}** is looking for players!",
+    "embeds": [
+        {
+            "fields": [
+                {#if !roster.isEmpty}
+                {
+                    "name": "Roster",
+                    "value": "{#each roster}{it.rankEmoji} `{it.playerName}`\n{/each}",
+                    "inline": true
+                },
+                {/if}
+                {
+                    "name": ":pencil: What they have to say:",
+                    "value": "```{json:escapeString(description)}```",
+                    "inline": true
+                }
+            ]
+        },
+        {
+            "title": "Apply on Gankster :link:",
+            "url": "https://gankster.gg/"
+        }
+    ]
+}

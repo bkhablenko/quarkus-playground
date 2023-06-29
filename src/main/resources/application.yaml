@@ -11,5 +11,5 @@ quarkus:
 
   log:
     category:
-      com.github.bkhablenko:
+      "com.github.bkhablenko":
         level: DEBUG
